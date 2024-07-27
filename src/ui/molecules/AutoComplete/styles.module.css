@@ -1,57 +1,65 @@
 .container {
-    position: relative;
-
+  position: relative;
 }
 
 .suggestionList {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 8px;
-    z-index: 1;
-    overflow: hidden;
-    border: 1px solid var(--light-gray-1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid var(--light-gray-1);
 }
 
 .suggestionItem {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.suggestionItem:hover, .active {
-    background-color: var(--light-gray-1);
-  }
+.suggestionItem:hover,
+.active {
+  background-color: var(--light-gray-1);
+}
 
 .suggestionContent {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-  .suggestionContent img {
-    width: 40px;
-    height: 40px;
-  }
+.suggestionContent img {
+  width: 40px;
+  height: 40px;
+}
 
-  .suggestionContent p {
-    margin: 0;
-    padding: 0;
-  }
+.suggestionContent p {
+  margin: 0;
+  padding: 0;
+}
 
 .suggestionName {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--dark-navy);
-  }
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-navy);
+}
 
 .suggestionDescription {
-    font-size: 12px;
-    color: var(--dark-gray-2);
-  } 
+  font-size: 12px;
+  color: var(--dark-gray-2);
+}
+
+.nothingFound {
+  color: var(--medium-gray-2);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  padding: 8px;
+}

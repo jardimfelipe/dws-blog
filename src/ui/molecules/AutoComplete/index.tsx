@@ -130,7 +130,7 @@ export default function AutoComplete({
               </li>
             ))
           ) : (
-            <li>Nothing found</li>
+            <li className={style.nothingFound}>Nothing found</li>
           )}
         </ul>
       ) : null}
