@@ -1,5 +1,11 @@
+import Button from "./ui/atoms/Button";
+
 function App() {
-  return <span role="heading">Welcome to React</span>;
+  return (
+    <Button variant="link" style={{ width: "200px" }}>
+      Hello
+    </Button>
+  );
 }
 
 export default App;

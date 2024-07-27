@@ -1,0 +1,44 @@
+.button {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 12px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.ghost {
+  background-color: transparent;
+  border: 1px solid var(--secondary-pink);
+  border-radius: 54px;
+  color: var(--secondary-pink);
+  font-weight: 700;
+}
+
+.primary {
+  background-color: var(--secondary-pink);
+  border: 1px solid var(--secondary-pink);
+  color: var(--light-gray-1);
+  border-radius: 42px;
+}
+
+.link {
+  background-color: transparent;
+  border: none;
+  color: var(--secondary-pink);
+}
+
+.primary:hover {
+  background-color: var(--dark-pink);
+  border: 1px solid var(--dark-pink);
+}
+
+.ghost:hover {
+  background-color: #FFE7EE;
+  border: 1px solid var(--dark-pink);
+}
+
+.link:hover {
+  background-color: transparent;
+  border: none;
+  color: var(--dark-pink);
+}
+
