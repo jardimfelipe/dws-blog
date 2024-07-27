@@ -1,5 +1,5 @@
 function App() {
-  return <></>;
+  return <span role="heading">Welcome to React</span>;
 }
 
 export default App;
