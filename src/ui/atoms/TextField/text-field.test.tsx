@@ -1,68 +1,65 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import TextField from "./index";
+import TextField, { Props } from "./index";
 import styles from "./styles.module.css";
 
-it("renders the TextField", () => {
-  render(<TextField placeholder="Enter text" />);
+let inputElement: HTMLElement;
 
-  const inputElement = screen.getByPlaceholderText("Enter text");
-  expect(inputElement).toBeInTheDocument();
-  expect(inputElement.className).toContain(styles.input);
-});
+const renderTextField = (props: Props) => {
+  render(<TextField {...props} placeholder="Enter text" />);
+  inputElement = screen.getByPlaceholderText("Enter text");
+};
 
-it("renders startAdornment", () => {
-  render(
-    <TextField startAdornment={<span>Start</span>} placeholder="Enter text" />
-  );
+describe("TextField component", () => {
+  it("renders the TextField", () => {
+    renderTextField({});
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement.className).toContain(styles.input);
+  });
 
-  const startAdornment = screen.getByText("Start");
-  expect(startAdornment).toBeInTheDocument();
-});
+  it("renders startAdornment", () => {
+    renderTextField({
+      startAdornment: <span>Start</span>,
+    });
+    const startAdornment = screen.getByText("Start");
+    expect(startAdornment).toBeInTheDocument();
+  });
 
-it("renders endAdornment", () => {
-  render(
-    <TextField endAdornment={<span>End</span>} placeholder="Enter text" />
-  );
+  it("renders endAdornment", () => {
+    renderTextField({
+      endAdornment: <span>End</span>,
+    });
+    const endAdornment = screen.getByText("End");
+    expect(endAdornment).toBeInTheDocument();
+  });
 
-  const endAdornment = screen.getByText("End");
-  expect(endAdornment).toBeInTheDocument();
-});
+  it("renders start and end adornments", () => {
+    renderTextField({
+      startAdornment: <span>Start</span>,
+      endAdornment: <span>End</span>,
+    });
+    const startAdornment = screen.getByText("Start");
+    const endAdornment = screen.getByText("End");
+    expect(startAdornment).toBeInTheDocument();
+    expect(endAdornment).toBeInTheDocument();
+  });
 
-it("renders start and end adornments", () => {
-  render(
-    <TextField
-      startAdornment={<span>Start</span>}
-      endAdornment={<span>End</span>}
-      placeholder="Enter text"
-    />
-  );
+  it("accepts and displays a value", () => {
+    renderTextField({ value: "Test value", readOnly: true });
+    inputElement = screen.getByDisplayValue("Test value");
+    expect(inputElement).toBeInTheDocument();
+  });
 
-  const startAdornment = screen.getByText("Start");
-  const endAdornment = screen.getByText("End");
+  it("calls the onChange handler", () => {
+    const handleChange = vi.fn();
+    renderTextField({ onChange: handleChange });
+    fireEvent.change(inputElement, { target: { value: "New text" } });
+    expect(handleChange).toHaveBeenCalledTimes(1);
+  });
 
-  expect(startAdornment).toBeInTheDocument();
-  expect(endAdornment).toBeInTheDocument();
-});
-
-it("accepts and displays a value", () => {
-  render(<TextField value="Test value" readOnly />);
-
-  const inputElement = screen.getByDisplayValue("Test value");
-  expect(inputElement).toBeInTheDocument();
-});
-
-it("should call the onChange handler", () => {
-  const handleChange = vi.fn();
-  render(<TextField onChange={handleChange} placeholder="Enter text" />);
-
-  const inputElement = screen.getByPlaceholderText("Enter text");
-  fireEvent.change(inputElement, { target: { value: "New text" } });
-  expect(handleChange).toHaveBeenCalledTimes(1);
-});
-
-it("applies additional classnames", () => {
-  render(<TextField className="additionalClass" placeholder="Enter text" />);
-
-  const inputElement = screen.getByPlaceholderText("Enter text");
-  expect(inputElement).toHaveClass("additionalClass");
+  it("applies additional classnames", () => {
+    renderTextField({
+      className: "additionalClass",
+    });
+    expect(inputElement).toHaveClass("additionalClass");
+  });
 });

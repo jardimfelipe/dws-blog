@@ -7,9 +7,6 @@ const meta = {
   title: "Atoms/TextField",
   component: TextField,
   tags: ["autodocs"],
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 };
 
 export default meta;

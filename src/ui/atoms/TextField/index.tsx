@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
 }
