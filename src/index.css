@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+	--dark-navy: #020318;
+	--midnight-blue: #060725;
+	--dark-indigo: #0B0E3A;
+
+	--primary-teal: #00BFC1;
+	--secondary-teal: #009598;
+	--dark-teal: #006C6E;
+
+	--primary-pink: #EF4C84;
+  --secondary-pink: #D31450;
+  --dark-pink: #8C1038;
+
+	--primary-blue: #5B7BC1;
+  --secondary-blue: #3559AA;
+  --dark-blue: #2C498A;
+
+	--light-gray-1: #F0F0F2;
+  --light-gray-2: #E0E2E6;
+  --light-gray-3: #C0C2C8;
+  --medium-gray-1: #9EA0A5;
+  --medium-gray-2: #7F8185;
+  --dark-gray-1: #5E5F63;
+  --dark-gray-2: #202122;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
