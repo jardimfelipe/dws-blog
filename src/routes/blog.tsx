@@ -1,3 +1,5 @@
+import CategoriesListFilter from "../modules/categories/components/CategoriesListFilter";
+
 export default function Blog() {
-  return <div>Blog</div>;
+  return <CategoriesListFilter />;
 }
