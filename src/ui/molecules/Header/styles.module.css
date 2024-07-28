@@ -4,6 +4,11 @@
   left: 0;
   z-index: 2;
   border: 1px solid var(--light-gray-2);
+  transition: background-color 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: var(--light-gray-1);
 }
 
 .container {

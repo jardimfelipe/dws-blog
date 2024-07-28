@@ -8,6 +8,7 @@
   padding: 8px;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
+  border: 1px solid var(--light-gray-1);
   background-color: var(--light-gray-1);
 }
 

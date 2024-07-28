@@ -16,16 +16,19 @@ const suggestions: Array<Suggestion> = [
     name: "Apple",
     description: "A fruit",
     image: "https://via.placeholder.com/50",
+    id: "1",
   },
   {
     name: "Banana",
     description: "A yellow fruit",
     image: "https://via.placeholder.com/50",
+    id: "2",
   },
   {
     name: "Cherry",
     description: "A small red fruit",
     image: "https://via.placeholder.com/50",
+    id: "3",
   },
 ];
 

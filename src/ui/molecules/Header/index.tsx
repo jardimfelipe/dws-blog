@@ -1,13 +1,15 @@
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import usePostsQuery from "../../../modules/posts/services/usePostsQuery";
 import AutoComplete, { Suggestion } from "../AutoComplete";
 import styles from "./styles.module.css";
-import { useCallback } from "react";
 
 export default function Header() {
   const navigate = useNavigate();
   const { data = [] } = usePostsQuery();
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const suggestions = data.map((post) => ({
     name: post.title,
     image: post.thumbnail_url,
@@ -22,8 +24,24 @@ export default function Header() {
     [navigate]
   );
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <h1>dentsu</h1>
