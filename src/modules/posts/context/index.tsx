@@ -1,14 +1,12 @@
-import { createContext, useContext, useMemo, ReactNode } from "react";
-import { Post } from "./types";
-import usePostsQuery from "./services/usePostsQuery";
-import PostListSkeleton from "./components/PostListSkeleton";
-import PostListError from "./components/PostListError";
+import { createContext, useMemo, ReactNode } from "react";
+import { Post } from "../types";
+import usePostsQuery from "../services/usePostsQuery";
+import PostListSkeleton from "../components/PostListSkeleton";
+import PostListError from "../components/PostListError";
 import { useSearchParams } from "react-router-dom";
-import { filterPosts } from "./utils/filterPost";
+import { filterPosts } from "../utils/filterPost";
 
-const PostContext = createContext<Post[]>([]);
-
-export const usePostContext = () => useContext(PostContext);
+export const PostContext = createContext<Post[]>([]);
 
 type PostsContextProviderProps = {
   children: ReactNode;

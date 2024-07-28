@@ -24,6 +24,8 @@
   --medium-gray-2: #7f8185;
   --dark-gray-1: #5e5f63;
   --dark-gray-2: #202122;
+
+  --header-height: 90px;
 }
 
 body {
@@ -57,6 +59,12 @@ body::after {
   background-position: bottom left;
   bottom: 0;
   left: 0;
+}
+
+main {
+  margin: var(--header-height) auto;
+  padding: 1rem 0.5rem;
+  max-width: 1290px;
 }
 
 .sr-only {

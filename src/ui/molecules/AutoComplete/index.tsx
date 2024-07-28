@@ -114,6 +114,7 @@ export default function AutoComplete({
           {filteredSuggestions.length ? (
             filteredSuggestions.map((suggestion, index) => (
               <li
+                onClick={() => onSelect(suggestion)}
                 role="option"
                 key={suggestion.id}
                 className={[

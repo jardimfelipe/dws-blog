@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import usePostsQuery from "../../../modules/posts/services/usePostsQuery";
 import AutoComplete, { Suggestion } from "../AutoComplete";
 import styles from "./styles.module.css";
+import { useCallback } from "react";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -14,9 +15,13 @@ export default function Header() {
     id: post.id,
   }));
 
-  const handleSelect = (suggestion: Suggestion) => {
-    navigate(`/posts/${suggestion.id}`);
-  };
+  const handleSelect = useCallback(
+    (suggestion: Suggestion) => {
+      navigate(`/posts/${suggestion.id}`);
+    },
+    [navigate]
+  );
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
