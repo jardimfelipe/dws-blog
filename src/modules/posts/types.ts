@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Author } from "../authors/types";
 import { Category } from "../categories/types";
 
@@ -16,3 +17,7 @@ export type Post = {
 export enum QueryKeys {
   posts = "posts",
 }
+
+export type PostsContextProviderProps = {
+  children: ReactNode;
+};

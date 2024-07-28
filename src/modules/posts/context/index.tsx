@@ -1,5 +1,6 @@
-import { createContext, useMemo, ReactNode } from "react";
-import { Post } from "../types";
+import { createContext, useMemo } from "react";
+
+import { Post, PostsContextProviderProps } from "../types";
 import usePostsQuery from "../services/usePostsQuery";
 import PostListSkeleton from "../components/PostListSkeleton";
 import PostListError from "../components/PostListError";
@@ -7,10 +8,6 @@ import { useSearchParams } from "react-router-dom";
 import { filterPosts } from "../utils/filterPost";
 
 export const PostContext = createContext<Post[]>([]);
-
-type PostsContextProviderProps = {
-  children: ReactNode;
-};
 
 export const PostsContextProvider = ({
   children,
