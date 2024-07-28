@@ -1,4 +1,4 @@
-import usePostsQuery from "../modules/post/usePostsQuery";
+import usePostsQuery from "../modules/posts/services/usePostsQuery";
 
 export default function Posts() {
   const { data = [] } = usePostsQuery();
