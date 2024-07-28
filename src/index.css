@@ -26,6 +26,7 @@
   --dark-gray-2: #202122;
 
   --header-height: 90px;
+  --sidebar-width: 300px;
 }
 
 body {
@@ -61,10 +62,16 @@ body::after {
   left: 0;
 }
 
-main {
+.container {
   margin: var(--header-height) auto;
   padding: 1rem 0.5rem;
   max-width: 1290px;
+  display: flex;
+}
+
+main {
+  flex: 1;
+  padding-left: 16px;
 }
 
 .sr-only {

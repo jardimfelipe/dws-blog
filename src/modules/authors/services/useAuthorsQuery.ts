@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import api from "../../../config/api";
 import { Author, QueryKeys } from "../types";
 
-const useCategoriesQuery = () => {
+const useAuthorsQuery = () => {
   return useQuery({
     queryKey: [QueryKeys.authors],
     queryFn: async () => {
@@ -14,4 +14,4 @@ const useCategoriesQuery = () => {
   });
 };
 
-export default useCategoriesQuery;
+export default useAuthorsQuery;

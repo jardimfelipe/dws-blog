@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Author = {
   id: string;
   name: string;
@@ -9,3 +11,13 @@ export type Author = {
 export enum QueryKeys {
   authors = "authors",
 }
+
+export type AuthorsContextProviderProps = {
+  children: ReactNode;
+};
+
+export type AuthorsContextType = {
+  data: Author[];
+  isLoading: boolean;
+  isError: boolean;
+};
