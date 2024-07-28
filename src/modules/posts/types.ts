@@ -7,7 +7,7 @@ export type Post = {
   content: string;
   thumbnail_url: string;
   authorId: string;
-  createAt: string;
+  createdAt: string;
   updatedAt: string;
   categories: Category[];
   author: Author;

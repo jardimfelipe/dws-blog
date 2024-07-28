@@ -1,8 +1,8 @@
 export type Category = {
   id: string;
   name: string;
-  createAt: string;
-  updateAt: string;
+  createdAt: string;
+  updatedAt: string;
   postId: string;
 };
 

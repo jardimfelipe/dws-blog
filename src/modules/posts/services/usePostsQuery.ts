@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 
 import api from "../../../config/api";
-import { QueryKeys } from "../types";
+import { Post, QueryKeys } from "../types";
 
 const usePostsQuery = () => {
   return useQuery({
