@@ -4,10 +4,11 @@ import styles from "./styles.module.css";
 
 function Container({
   children,
+  className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={styles.container} {...props}>
+    <div className={[styles.container, className].join(" ")} {...props}>
       {children}
     </div>
   );

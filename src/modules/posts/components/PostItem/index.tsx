@@ -4,6 +4,7 @@ import Card from "../../../../ui/molecules/Card";
 import styles from "./styles.module.css";
 import { formatDate } from "../../../../utils/date";
 import Badge from "../../../../ui/atoms/Badge";
+import Skeleton from "../../../../ui/atoms/Skeleton";
 
 type Props = {
   post: Post;
@@ -32,3 +33,24 @@ export default function PostItem({ post }: Props) {
     </Card.Container>
   );
 }
+
+PostItem.Skeleton = function PostItemSkeleton() {
+  return (
+    <Card.Container style={{ width: "300px" }}>
+      <Skeleton width="100%" height="150px" />
+      <Card.Content>
+        <div className={styles.meta}>
+          <Skeleton width="100%" height="20px" />
+          <span className={styles.separator} />
+          <Skeleton width="100%" height="20px" />
+        </div>
+        <p>
+          <Skeleton width="100%" height="30px" />
+        </p>
+        <p>
+          <Skeleton width="100%" height="30px" />
+        </p>
+      </Card.Content>
+    </Card.Container>
+  );
+};

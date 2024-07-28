@@ -25,3 +25,13 @@ function Posts() {
     <div>No posts found</div>
   );
 }
+
+PostList.Skeleton = function PostListSkeleton() {
+  return (
+    <div className={styles.container}>
+      {[...new Array(5)].map((_, index) => (
+        <PostItem.Skeleton key={index} />
+      ))}
+    </div>
+  );
+};

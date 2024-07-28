@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -11,11 +11,18 @@ vi.mock("../../src/modules/posts/services/usePostsQuery", () => ({
 vi.mock("react-router-dom", () => ({
   useSearchParams: () => [new URLSearchParams()],
 }));
-vi.mock("../components/PostListSkeleton", () => ({
-  default: () => <div data-testid="skeleton">Loading...</div>,
-}));
+vi.mock("../components/PostList", () => {
+  const MockPostList = ({ children }: { children?: ReactNode }) => (
+    <div data-testid="postlist">{children}</div>
+  );
+  MockPostList.Skeleton = () => <div data-testid="skeleton">Loading...</div>;
+  return {
+    __esModule: true,
+    default: MockPostList,
+  };
+});
 
-vi.mock("../components/PostListError", () => ({
+vi.mock("../../../ui/atoms/ErrorState", () => ({
   default: () => <div data-testid="error">Error</div>,
 }));
 
@@ -30,15 +37,14 @@ const renderWithProvider = (children: ReactNode) => {
   );
 };
 
-const TestConsumer = () => (
-  <PostContext.Consumer>
-    {(posts) => (
-      <div data-testid="posts-output">
-        {posts.length ? "Posts found" : "No posts"}
-      </div>
-    )}
-  </PostContext.Consumer>
-);
+const TestConsumer = () => {
+  const posts = useContext(PostContext);
+  return (
+    <div data-testid="posts-output">
+      {posts.length ? "Posts found" : "No posts"}
+    </div>
+  );
+};
 
 describe("PostsContextProvider", () => {
   beforeEach(() => {
@@ -68,7 +74,7 @@ describe("PostsContextProvider", () => {
     renderWithProvider(<TestConsumer />);
 
     expect(screen.queryByText("Posts found")).not.toBeInTheDocument();
-    expect(screen.getByTestId("error")).toBeInTheDocument();
+    expect(await screen.findByTestId("error")).toBeInTheDocument();
   });
 
   it("should show filtered posts when data is available", async () => {

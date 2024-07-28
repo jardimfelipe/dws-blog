@@ -2,19 +2,18 @@ import { createContext, useMemo } from "react";
 
 import { Post, PostsContextProviderProps } from "../types";
 import usePostsQuery from "../services/usePostsQuery";
-import PostListSkeleton from "../components/PostListSkeleton";
-import PostListError from "../components/PostListError";
 import { useSearchParams } from "react-router-dom";
 import { filterPosts } from "../utils/filterPost";
+import PostList from "../components/PostList";
+import ErrorState from "../../../ui/atoms/ErrorState";
 
 export const PostContext = createContext<Post[]>([]);
 
 export const PostsContextProvider = ({
   children,
 }: PostsContextProviderProps) => {
-  const { data = [], isLoading, isError } = usePostsQuery();
+  const { data = [], isLoading, isError, refetch } = usePostsQuery();
   const [searchParams] = useSearchParams();
-
   const filteredPosts = useMemo(() => {
     const params = {
       authors: searchParams.getAll("authors"),
@@ -29,11 +28,11 @@ export const PostsContextProvider = ({
   }, [isLoading, isError, data, searchParams]);
 
   if (isLoading) {
-    return <PostListSkeleton />;
+    return <PostList.Skeleton />;
   }
 
   if (isError) {
-    return <PostListError />;
+    return <ErrorState onClick={refetch} />;
   }
 
   return (

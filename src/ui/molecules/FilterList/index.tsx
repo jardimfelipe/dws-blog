@@ -16,7 +16,7 @@ function Container({ children }: PropsWithChildren) {
           <FilterIcon />
           <Card.Title>Filters</Card.Title>
         </div>
-        {children}
+        <div className={styles.filterContainer}>{children}</div>
       </Card.Content>
     </Card.Container>
   );

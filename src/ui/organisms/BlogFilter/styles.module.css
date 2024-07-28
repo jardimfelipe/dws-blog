@@ -6,4 +6,5 @@
 
 .wrapper {
   width: var(--sidebar-width);
+  position: fixed;
 }

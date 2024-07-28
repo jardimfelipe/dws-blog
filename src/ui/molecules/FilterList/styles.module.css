@@ -37,3 +37,11 @@
   margin: 0;
   padding: 0;
 }
+
+.filterContainer {
+  overflow-y: auto;
+  max-height: 300px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--light-gray-3) var(--light-gray-2);
+}
