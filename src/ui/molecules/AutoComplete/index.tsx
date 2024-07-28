@@ -8,6 +8,7 @@ export type Suggestion = {
   name: string;
   description?: string;
   image?: string;
+  id: string;
 };
 
 type Props = {
@@ -114,7 +115,7 @@ export default function AutoComplete({
             filteredSuggestions.map((suggestion, index) => (
               <li
                 role="option"
-                key={index}
+                key={suggestion.id}
                 className={[
                   style.suggestionItem,
                   activeSuggestionIndex === index ? style.active : null,
