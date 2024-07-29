@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostItem({ post }: Props) {
   return (
-    <Card.Container style={{ width: "300px" }}>
+    <Card.Container data-testid="post" className={styles.post}>
       <Card.Image src={post.thumbnail_url} height="150px" alt={post.title} />
       <Card.Content>
         <div className={styles.meta}>
@@ -36,7 +36,7 @@ export default function PostItem({ post }: Props) {
 
 PostItem.Skeleton = function PostItemSkeleton() {
   return (
-    <Card.Container style={{ width: "300px" }}>
+    <Card.Container className={styles.post}>
       <Skeleton width="100%" height="150px" />
       <Card.Content>
         <div className={styles.meta}>

@@ -21,3 +21,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.post {
+  width: 300px;
+}
