@@ -1,30 +1,63 @@
-# React + TypeScript + Vite
+# DWS Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is built using the following technologies:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **React Router**: A collection of navigational components for React applications.
+- **Context API**: A React feature for managing state globally across the application.
+- **CSS Modules**: A CSS file in which all class and animation names are scoped locally by default.
 
-## Expanding the ESLint configuration
+## Testing Frameworks
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Vitest**: A Vite-native unit testing framework.
+- **React Testing Library**: A library for testing React components.
+- **Playwright**: A framework for end-to-end testing.
 
-- Configure the top-level `parserOptions` property like this:
+## Additional Tools
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- **Storybook**: An open-source tool for developing UI components in isolation.
+
+## Getting Started
+
+### Installation
+
+To install the necessary dependencies, run:
+
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Running the Project
+
+To start the development server, use:
+
+```bash
+npm run dev
+```
+
+### Running Unit Tests
+
+To execute unit tests, run:
+
+```bash
+npm run test
+```
+
+### Running End-to-End Tests
+
+To perform end-to-end tests with Playwright, use:
+
+```bash
+npx playwright test
+```
+
+### Running Storybook
+
+To launch Storybook, use:
+
+```bash
+npm run storybook
+```
