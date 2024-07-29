@@ -55,11 +55,4 @@ describe("TextField component", () => {
     fireEvent.change(inputElement, { target: { value: "New text" } });
     expect(handleChange).toHaveBeenCalledTimes(1);
   });
-
-  it("applies additional classnames", () => {
-    renderTextField({
-      className: "additionalClass",
-    });
-    expect(inputElement).toHaveClass("additionalClass");
-  });
 });

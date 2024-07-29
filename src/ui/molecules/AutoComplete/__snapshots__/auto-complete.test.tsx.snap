@@ -12,7 +12,7 @@ exports[`AutoComplete Component > matches the snapshot 1`] = `
       Search
     </label>
     <div
-      class="_container_e5689c"
+      class="_container_e5689c "
     >
       <div
         class="_inputContainer_e5689c"
