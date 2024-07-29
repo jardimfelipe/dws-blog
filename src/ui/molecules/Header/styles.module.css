@@ -42,3 +42,9 @@
 .autocomplete {
   width: 520px;
 }
+
+@media (max-width: 768px) {
+  .autocomplete {
+    width: auto;
+  }
+}

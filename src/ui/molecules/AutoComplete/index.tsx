@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import SearchButton from "../../atoms/SearchButton";
 import TextField from "../../atoms/TextField";
 import style from "./styles.module.css";
+import useMediaQuery from "../../../utils/useMediaQuery";
 
 export type Suggestion = {
   name: string;
@@ -27,6 +28,8 @@ export default function AutoComplete({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const filteredSuggestions = useMemo(() => {
     if (searchTerm === "") {
@@ -95,16 +98,20 @@ export default function AutoComplete({
       <label htmlFor="autocomplete-input" className="sr-only">
         Search
       </label>
-      <TextField
-        aria-autocomplete="list"
-        aria-controls="autocomplete-list"
-        id={id}
-        onKeyDown={handleKeyDown}
-        placeholder={placeholder}
-        value={searchTerm}
-        onChange={handleChange}
-        endAdornment={<SearchButton />}
-      />
+      {isMobile ? (
+        <SearchButton />
+      ) : (
+        <TextField
+          aria-autocomplete="list"
+          aria-controls="autocomplete-list"
+          id={id}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          value={searchTerm}
+          onChange={handleChange}
+          endAdornment={<SearchButton />}
+        />
+      )}
       {showSuggestions ? (
         <ul
           id="autocomplete-list"

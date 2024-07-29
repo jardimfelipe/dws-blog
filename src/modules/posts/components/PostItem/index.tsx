@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostItem({ post }: Props) {
   return (
-    <Card.Container data-testid="post" className={styles.post}>
+    <Card.Container data-testid="post">
       <Card.Image src={post.thumbnail_url} height="150px" alt={post.title} />
       <Card.Content>
         <div className={styles.meta}>

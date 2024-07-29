@@ -64,7 +64,7 @@ body::after {
 
 .container {
   margin: 0 auto;
-  padding: 1rem 0.5rem;
+  padding: 1rem;
   max-width: 1290px;
   display: flex;
   flex-direction: column;
@@ -91,4 +91,11 @@ aside {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-left: 0;
+    margin-left: 0;
+  }
 }

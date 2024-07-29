@@ -10,3 +10,9 @@
   line-height: 0.9;
   color: var(--dark-navy);
 }
+
+@media (max-width: 768px) {
+  .header h1 {
+    display: none;
+  }
+}
