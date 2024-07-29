@@ -3,7 +3,7 @@ import { createContext, useMemo } from "react";
 import { Post, PostsContextProviderProps } from "../types";
 import usePostsQuery from "../services/usePostsQuery";
 import { useSearchParams } from "react-router-dom";
-import { filterPosts } from "../utils/filterPost";
+import { FilterParams, filterPosts } from "../utils/filterPost";
 import PostList from "../components/PostList";
 import ErrorState from "../../../ui/atoms/ErrorState";
 
@@ -18,6 +18,7 @@ export const PostsContextProvider = ({
     const params = {
       authors: searchParams.getAll("authors"),
       categories: searchParams.getAll("categories"),
+      sort: (searchParams.get("sort") || "asc") as FilterParams["sort"],
     };
 
     if (isLoading || isError) {

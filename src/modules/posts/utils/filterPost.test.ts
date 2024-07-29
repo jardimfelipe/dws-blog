@@ -1,13 +1,14 @@
 import { describe, it, expect } from "vitest";
 
 import { Post } from "../types";
-import { filterPosts } from "./filterPost";
+import { FilterParams, filterPosts } from "./filterPost";
 
 const getFilteredPosts = (
   posts: unknown[],
-  params: { categories: string[]; authors: string[] }
+  params: { categories: string[]; authors: string[]; sort?: "asc" | "desc" }
 ): Post[] => {
-  return filterPosts(posts as Post[], params);
+  const { sort = "asc" } = params;
+  return filterPosts(posts as Post[], { ...params, sort });
 };
 
 const posts = [
@@ -20,6 +21,7 @@ const posts = [
     ],
     author: { id: "auth1", name: "Author 1" },
     content: "Content 1",
+    createdAt: "2024-07-25T16:19:30.419Z",
   },
   {
     id: "2",
@@ -27,6 +29,7 @@ const posts = [
     categories: [{ id: "cat2", name: "Category 2" }],
     author: { id: "auth2", name: "Author 2" },
     content: "Content 2",
+    createdAt: "2024-03-21T12:19:30.419Z",
   },
   {
     id: "3",
@@ -34,6 +37,7 @@ const posts = [
     categories: [{ id: "cat3", name: "Category 3" }],
     author: { id: "auth1", name: "Author 1" },
     content: "Content 3",
+    createdAt: "2023-07-25T16:20:30.419Z",
   },
 ];
 
@@ -130,5 +134,31 @@ describe("filterPosts", () => {
     const result = getFilteredPosts(posts, params);
     expect(result).toHaveLength(1);
     expect(result[0].id).toBe("1");
+  });
+
+  it("sorts posts by createdAt in ascending order", () => {
+    const params = {
+      categories: [],
+      authors: [],
+      sort: "asc" as FilterParams["sort"],
+    };
+    const result = getFilteredPosts(posts, params);
+    expect(result).toHaveLength(3);
+    expect(result[0].id).toBe("1");
+    expect(result[1].id).toBe("2");
+    expect(result[2].id).toBe("3");
+  });
+
+  it("sorts posts by createdAt in descending order", () => {
+    const params = {
+      categories: [],
+      authors: [],
+      sort: "desc" as FilterParams["sort"],
+    };
+    const result = getFilteredPosts(posts, params);
+    expect(result).toHaveLength(3);
+    expect(result[0].id).toBe("3");
+    expect(result[1].id).toBe("2");
+    expect(result[2].id).toBe("1");
   });
 });

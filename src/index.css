@@ -63,15 +63,17 @@ body::after {
 }
 
 .container {
-  margin: var(--header-height) auto;
+  margin: 0 auto;
   padding: 1rem 0.5rem;
   max-width: 1290px;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 main {
   flex: 1;
-  padding-left: 16px;
+  padding-left: 24px;
   margin-left: var(--sidebar-width);
 }
 

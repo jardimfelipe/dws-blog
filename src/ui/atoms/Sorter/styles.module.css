@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.container span {
+  font-weight: 700;
+  color: var(--dark-gray-1);
+}
+
+.sorter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 42px;
+  color: var(--dark-gray-1);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: background-color 0.3s ease;
+}
+
+.sorter svg {
+  width: 20px;
+  height: 20px;
+  color: var(--secondary-teal);
+}
+
+.sorter:hover {
+  background-color: var(--secondary-teal);
+  color: var(--light-gray-1);
+}
+
+.sorter:hover svg {
+  color: var(--light-gray-1);
+}
+
+.sorter:active {
+  background-color: var(--dark-teal);
+}

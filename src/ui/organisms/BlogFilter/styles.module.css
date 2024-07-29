@@ -7,4 +7,6 @@
 .wrapper {
   width: var(--sidebar-width);
   position: fixed;
+  top: calc(50% + var(--header-height));
+  transform: translateY(-50%);
 }
