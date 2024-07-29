@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { formatDate } from "../../../../utils/date";
 import Badge from "../../../../ui/atoms/Badge";
 import Skeleton from "../../../../ui/atoms/Skeleton";
+import { Link } from "react-router-dom";
 
 type Props = {
   post: Post;
@@ -12,25 +13,31 @@ type Props = {
 
 export default function PostItem({ post }: Props) {
   return (
-    <Card.Container data-testid="post">
-      <Card.Image src={post.thumbnail_url} height="150px" alt={post.title} />
-      <Card.Content>
-        <div className={styles.meta}>
-          <Card.Description>{formatDate(post.createdAt)}</Card.Description>
-          <span className={styles.separator} />
-          <Card.Description>{post.author.name}</Card.Description>
-        </div>
-        <Card.Title>{post.title}</Card.Title>
+    <Link className={styles.link} to={`/posts/${post.id}`}>
+      <Card.Container className={styles.post} data-testid="post">
+        <Card.Image src={post.thumbnail_url} height="150px" alt={post.title} />
+        <Card.Content>
+          <div className={styles.meta}>
+            <Card.Description>
+              <time dateTime={formatDate(post.createdAt)}>
+                {formatDate(post.createdAt)}
+              </time>
+            </Card.Description>
+            <span className={styles.separator} />
+            <Card.Description>{post.author.name}</Card.Description>
+          </div>
+          <Card.Title>{post.title}</Card.Title>
 
-        <p className={styles.content}>{post.content}</p>
-      </Card.Content>
+          <p className={styles.content}>{post.content}</p>
+        </Card.Content>
 
-      <Card.Footer>
-        {post.categories.map((category) => (
-          <Badge key={category.id}>{category.name}</Badge>
-        ))}
-      </Card.Footer>
-    </Card.Container>
+        <Card.Footer>
+          {post.categories.map((category) => (
+            <Badge key={category.id}>{category.name}</Badge>
+          ))}
+        </Card.Footer>
+      </Card.Container>
+    </Link>
   );
 }
 

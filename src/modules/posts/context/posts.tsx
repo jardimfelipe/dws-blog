@@ -20,7 +20,6 @@ export const PostsContextProvider = ({
       categories: searchParams.getAll("categories"),
       sort: (searchParams.get("sort") || "asc") as FilterParams["sort"],
     };
-
     if (isLoading || isError) {
       return [];
     }

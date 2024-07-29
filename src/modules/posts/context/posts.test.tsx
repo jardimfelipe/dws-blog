@@ -2,7 +2,7 @@ import { ReactNode, useContext } from "react";
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { PostsContextProvider, PostContext } from ".";
+import { PostsContextProvider, PostContext } from "./posts";
 
 vi.mock("../../src/modules/posts/services/usePostsQuery", () => ({
   __esModule: true,

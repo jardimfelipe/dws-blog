@@ -16,8 +16,16 @@ export type Post = {
 
 export enum QueryKeys {
   posts = "posts",
+  post = "post",
 }
 
 export type PostsContextProviderProps = {
   children: ReactNode;
+};
+
+export type PostContextType = {
+  data: Post | undefined;
+  latestsPosts: Post[];
+  isLoading: boolean;
+  isError: boolean;
 };

@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 export default function Blog() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <div className="container">
+    <>
       <div className={styles.header}>
         <h1>DWS Blog</h1>
         {isMobile ? <BlogFilter /> : null}
@@ -17,6 +17,6 @@ export default function Blog() {
       <main>
         <PostList />
       </main>
-    </div>
+    </>
   );
 }

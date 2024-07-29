@@ -7,6 +7,7 @@ import "./index.css";
 import Root from "./routes/root.tsx";
 import Error from "./routes/error.tsx";
 import Blog from "./routes/blog/index.tsx";
+import Post from "./routes/post/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Blog />,
+      },
+      {
+        path: "posts/:id",
+        element: <Post />,
       },
     ],
   },

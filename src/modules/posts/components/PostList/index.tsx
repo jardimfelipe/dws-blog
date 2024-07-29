@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { PostContext, PostsContextProvider } from "../../context";
+import { PostContext, PostsContextProvider } from "../../context/posts";
 import PostItem from "../PostItem";
 import styles from "./styles.module.css";
 

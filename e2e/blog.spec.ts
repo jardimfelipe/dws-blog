@@ -20,8 +20,8 @@ test.describe("Blog", () => {
       categories: [{ id: "cat2", name: "Category 2" }],
       author: { id: "auth2", name: "Author 2" },
       content: "Content 2",
-      createdAt: "2024-07-25T16:19:30.419Z",
       thumbnail_url: "https://via.placeholder.com/150",
+      createdAt: "2024-03-21T12:19:30.419Z",
     },
     {
       id: "3",
@@ -29,7 +29,7 @@ test.describe("Blog", () => {
       categories: [{ id: "cat3", name: "Category 3" }],
       author: { id: "auth1", name: "Author 2" },
       content: "Content 3",
-      createdAt: "2024-07-25T16:19:30.419Z",
+      createdAt: "2023-07-25T16:20:30.419Z",
       thumbnail_url: "https://via.placeholder.com/150",
     },
   ];
@@ -112,5 +112,25 @@ test.describe("Blog", () => {
     await page.getByRole("link", { name: authors[0].name }).click();
     const visiblePosts = await page.locator("[data-testid=post]").count();
     expect(visiblePosts).toBe(1);
+  });
+
+  test("order posts by createdAt in descending order", async ({ page }) => {
+    await page.getByRole("button", { name: "Newest first" }).click();
+
+    await expect(
+      page.getByRole("button", { name: "Oldest first" })
+    ).toBeVisible();
+
+    const postDates = await page
+      .getByRole("time")
+      .evaluateAll((elements) =>
+        elements.map((element) =>
+          new Date(element.textContent as string).getTime()
+        )
+      );
+    const isSorted = postDates.every(
+      (date, i, array) => !i || array[i - 1] <= date
+    );
+    expect(isSorted).toBe(true);
   });
 });
