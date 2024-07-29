@@ -2,6 +2,33 @@
   position: relative;
 }
 
+.overlay {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  background-color: var(--light-gray-1);
+  padding: 32px 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.overlay.open {
+  display: block;
+}
+
+.closeButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .suggestionList {
   position: absolute;
   top: 100%;
@@ -62,4 +89,18 @@
   font-weight: 400;
   text-align: center;
   padding: 8px;
+}
+
+@media (max-width: 768px) {
+  .suggestionList {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 80px);
+    box-sizing: border-box;
+    top: 80px;
+    background: transparent;
+    overflow-y: auto;
+  }
 }

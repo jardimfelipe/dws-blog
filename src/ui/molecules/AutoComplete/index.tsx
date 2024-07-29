@@ -4,6 +4,8 @@ import SearchButton from "../../atoms/SearchButton";
 import TextField from "../../atoms/TextField";
 import style from "./styles.module.css";
 import useMediaQuery from "../../../utils/useMediaQuery";
+import CloseIcon from "../../atoms/Icons/CloseIcon";
+import ArrowLeft from "../../atoms/Icons/ArrowLeft";
 
 export type Suggestion = {
   name: string;
@@ -28,6 +30,7 @@ export default function AutoComplete({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
+  const [isOpen, setIsOpen] = useState(false);
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -93,13 +96,45 @@ export default function AutoComplete({
     }
   };
 
+  const clearSearch = () => {
+    setSearchTerm("");
+    setShowSuggestions(false);
+  };
+
+  const toggleOverlay = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <div className={style.container}>
       <label htmlFor="autocomplete-input" className="sr-only">
         Search
       </label>
       {isMobile ? (
-        <SearchButton />
+        <>
+          <SearchButton onClick={toggleOverlay} />
+          <div className={`${style.overlay} ${isOpen ? style.open : ""}`}>
+            <TextField
+              aria-autocomplete="list"
+              aria-controls="autocomplete-list"
+              id={id}
+              onKeyDown={handleKeyDown}
+              placeholder={placeholder}
+              value={searchTerm}
+              onChange={handleChange}
+              startAdornment={
+                <button className={style.closeButton} onClick={toggleOverlay}>
+                  <ArrowLeft />
+                </button>
+              }
+              endAdornment={
+                <button onClick={clearSearch} className={style.closeButton}>
+                  <CloseIcon />
+                </button>
+              }
+            />
+          </div>
+        </>
       ) : (
         <TextField
           aria-autocomplete="list"
