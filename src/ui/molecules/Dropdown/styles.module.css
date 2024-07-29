@@ -2,6 +2,14 @@
   position: relative;
 }
 
+.container button {
+  font-size: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .dropdownMenu {
   position: absolute;
   top: 100%;
@@ -13,6 +21,7 @@
   transition: opacity 0.3s ease;
   opacity: 0;
   max-height: 0;
+  width: 200px;
 }
 
 .open .dropdownMenu {
@@ -39,4 +48,16 @@
 .dropdownItem:hover {
   background-color: #00bfc114;
   border-bottom: 1px solid var(--secondary-teal);
+}
+
+.selected {
+  display: inline-block;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  width: 100px;
 }

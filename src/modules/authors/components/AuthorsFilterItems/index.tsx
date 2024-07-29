@@ -5,6 +5,8 @@ import FilterList from "../../../../ui/molecules/FilterList";
 import Skeleton from "../../../../ui/atoms/Skeleton";
 import { AuthorsContext } from "../../context";
 import { Author } from "../../types";
+import Dropdown from "../../../../ui/molecules/Dropdown";
+import useMediaQuery from "../../../../utils/useMediaQuery";
 
 export default function AuthorsFilterItems() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,6 +15,16 @@ export default function AuthorsFilterItems() {
     () => searchParams.getAll("authors") || [],
     [searchParams]
   );
+  const selected = useMemo(
+    () =>
+      authors.map((id) => {
+        const author = data.find((author) => author.id === id);
+        return author ? author.name : "";
+      }),
+    [authors, data]
+  );
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleClick = useCallback(
     (authorId: Author["id"]) => {
@@ -30,6 +42,27 @@ export default function AuthorsFilterItems() {
     },
     [authors, searchParams, setSearchParams]
   );
+
+  const handleUnselect = useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("authors");
+    setSearchParams(params);
+  }, [searchParams, setSearchParams]);
+
+  if (isMobile) {
+    return (
+      <Dropdown onUnselect={handleUnselect} selected={selected} label="Authors">
+        {data.map((author) => (
+          <Dropdown.DropdownItem
+            key={author.id}
+            onClick={() => handleClick(author.id)}
+          >
+            {author.name}
+          </Dropdown.DropdownItem>
+        ))}
+      </Dropdown>
+    );
+  }
   return (
     <>
       <FilterList.SubHeader>Authors</FilterList.SubHeader>

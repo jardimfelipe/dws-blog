@@ -68,7 +68,6 @@ body::after {
   max-width: 1290px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 main {

@@ -10,7 +10,16 @@ export default function BlogFilter() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   if (isMobile) {
-    return null;
+    return (
+      <div className={styles.container}>
+        <CategoriesContextProvider>
+          <CategoriesFilterItems />
+        </CategoriesContextProvider>
+        <AuthorsContextProvider>
+          <AuthorsFilterItems />
+        </AuthorsContextProvider>
+      </div>
+    );
   }
   return (
     <div className={styles.wrapper}>

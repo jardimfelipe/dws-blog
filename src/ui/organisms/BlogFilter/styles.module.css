@@ -10,3 +10,10 @@
   top: calc(50% + var(--header-height));
   transform: translateY(-50%);
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: row;
+    gap: 6px;
+  }
+}

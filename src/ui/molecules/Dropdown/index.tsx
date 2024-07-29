@@ -4,16 +4,22 @@ import Button from "../../atoms/Button";
 import styles from "./styles.module.css";
 import Card from "../Card";
 import useClickOutside from "../../../utils/useClickOutside";
+import ArrowDown from "../../atoms/Icons/ArrowDown";
+import CloseIcon from "../../atoms/Icons/CloseIcon";
 
-type Props = {
+export type Props = {
   label: string;
+  selected?: string[];
+  onUnselect?: () => void;
 };
 
 export default function Dropdown({
   label,
+  selected = [],
   children,
+  onUnselect,
 }: PropsWithChildren<Props>) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = useCallback(() => {
@@ -28,15 +34,25 @@ export default function Dropdown({
 
   useClickOutside(ref, handleClickOutside);
   return (
-    <div className={`${styles.container} ${isOpen ? styles.open : ""}`}>
-      <Button ref={ref} onClick={toggleDropdown} variant="ghost">
+    <div
+      ref={ref}
+      className={`${styles.container} ${isOpen ? styles.open : ""}`}
+    >
+      <Button onClick={toggleDropdown} variant="ghost">
         {label}
+        <ArrowDown />
       </Button>
       <Card.Container className={styles.dropdownMenu}>
         <Card.Content>
           <ul className={styles.dropdownList} role="listbox">
             {children}
           </ul>
+          {selected.length > 0 ? (
+            <Button onClick={onUnselect} variant="ghost">
+              <span className={styles.selected}>{selected.join(", ")}</span>
+              <CloseIcon />
+            </Button>
+          ) : null}
         </Card.Content>
       </Card.Container>
     </div>

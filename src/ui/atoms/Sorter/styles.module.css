@@ -41,3 +41,9 @@
 .sorter:active {
   background-color: var(--dark-teal);
 }
+
+@media (max-width: 768px) {
+  .container span {
+    display: none;
+  }
+}

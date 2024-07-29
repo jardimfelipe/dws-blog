@@ -6,11 +6,11 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
-  function Button({ children, variant = "primary", ...props }, ref) {
+  function Button({ children, variant = "primary", className, ...props }, ref) {
     return (
       <button
         ref={ref}
-        className={[styles.button, styles[variant]].join(" ")}
+        className={[styles.button, styles[variant], className].join(" ")}
         {...props}
       >
         {children}
