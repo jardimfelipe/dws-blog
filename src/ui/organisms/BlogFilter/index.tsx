@@ -2,10 +2,16 @@ import AuthorsFilterItems from "../../../modules/authors/components/AuthorsFilte
 import { AuthorsContextProvider } from "../../../modules/authors/context";
 import CategoriesFilterItems from "../../../modules/categories/components/CategoriesFilterItems";
 import { CategoriesContextProvider } from "../../../modules/categories/context";
+import useMediaQuery from "../../../utils/useMediaQuery";
 import FilterList from "../../molecules/FilterList";
 import styles from "./styles.module.css";
 
 export default function BlogFilter() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  if (isMobile) {
+    return null;
+  }
   return (
     <div className={styles.wrapper}>
       <FilterList.Container>
